@@ -29,7 +29,7 @@ public class LevelInitializer : MonoBehaviour
     {
         _waitEf = new WaitForEndOfFrame();
 
-        StartCoroutine("InitLevel");
+        StartCoroutine(InitLevel());
     }
 
     private IEnumerator InitLevel()
@@ -62,7 +62,7 @@ public class LevelInitializer : MonoBehaviour
 
     private IEnumerator EnablePlayerInteractions()
     {
-        GetComponent<PI.PlayerInteraction>().enabled = true;
+        GetComponent<PI.PlayerInteractions>().enabled = true;
 
         yield return _waitEf;
     }

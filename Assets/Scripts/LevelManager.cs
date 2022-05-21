@@ -1,30 +1,27 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LevelControl
+public class LevelManager : MonoBehaviour
 {
-    public class LevelManager : MonoBehaviour
+    public List<ObjectsPerFloor> LvlObjects = new List<ObjectsPerFloor>();
+
+    private static LevelManager _instance;
+
+    public static LevelManager GetInstance()
     {
-        public List<ObjectsPerFloor> LvlObjects = new();
-
-        public static LevelManager Instance;
-
-        public LevelManager GetInstance()
-        {
-            return Instance;
-        }
-
-        private void Awake()
-        {
-            Instance = this;
-        }
+        return _instance;
     }
 
-    [Serializable]
-    public class ObjectsPerFloor
+    private void Awake()
     {
-        public int FloorIndex;
-        public List<GameObject> Objects = new();
+        _instance = this;
     }
+}
+
+[Serializable]
+public class ObjectsPerFloor
+{
+    public int FloorIndex;
+    public List<GameObject> Objects = new List<GameObject>();
 }
